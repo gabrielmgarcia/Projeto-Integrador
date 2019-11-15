@@ -16,7 +16,7 @@ public class ProjetoScript {
     }
     static int dadoTresLados(int a) {
 
-        a = 1 + (int) (Math.random() * 6);
+        a = 1 + (int) (Math.random() * 3);
         return a;
 
     }
@@ -107,13 +107,21 @@ public class ProjetoScript {
 
                 case "1":
                     // instruções do jogo
-                    JOptionPane.showMessageDialog(null, "Como jogar:\r\n\n"
-                            + "1 - Nosso RPG consiste em um desenvolvimento da nave, os personagens são utilizados\n\r"
-                            + "para dar diferentes características a ela, por parte dos atributos que podem tanto ser \n\r"
-                            + "adicionados quanto retirados.\r\n\n"
-                            + "2 - Você deve escolher entre as raças Humano ou Extraterrestre, dentre essas duas raças \n\r"
-                            + "você também escolherá entre 4 classes, duas delas são humanos e as outras duas são \n\r"
-                            + "extraterrestres.\r\n" + "");
+                	 JOptionPane.showMessageDialog(null, "1-	Suas ações são baseadas na soma de seus atributos multiplicado pelo número\n "
+	                            + "tirado no dado o número resultante dessa multiplicação é o dano aplicado no inimigo.\r\n" + 
+	                              "\r\n" + 
+                           	  "2-	Em alguma determinada situação do jogo você será obrigado a escolher entre dois\n "
+                           	  + "caminhos, sendo que em um deles você poderá adquirir mais atributos e o outro novas\n"
+                           	  + "tecnologias e um modo de jogo diferenciado do padrão, também determinará o caráter do\n "
+                           	  + "seu personagem o que será muito importante no decorrer do jogo.\r\n" + 
+	                              "\r\n" + 
+                                 "3-	Você começará com uma nave padrão e dependendo da raça e classe que escolher isso\n"
+                                 + "determinará o quanto mais de atributos essa nave irá receber ou o quanto será retirado\n"
+                                 + "também, as batalhas vão deixando sua nave cada vez mais fraca, então é importante tomar\n "
+                                 + "cuidado para que sua vida não chegue a zero, caso isso aconteça, será o fim de jogo, algumas\n"
+                                 + "batalhas diferenciadas contão também com outras características que caso cheguem a zero \n"
+                                 + "será o fim de jogo.\r\n" + 
+	                              "\r\n","Como Jogar:",JOptionPane.INFORMATION_MESSAGE);
                     break;
 
                 case "2":
@@ -726,11 +734,12 @@ public class ProjetoScript {
                                 + "fácil derrota-los...  ");
                         JOptionPane.showMessageDialog(null,
                                 "Ao se aproximar , você ativa o dispositivo para cortar o sinal, porém logo é notado... \n "
-                                + "a nave tem 60 pontos de vida");
+                                + "a nave tem 100 pontos de vida");
 
                         // Pontos de vida do personagem e da nave inimiga
-                        int batalha01BuTec[] = {100, 60};
-                        JOptionPane.showMessageDialog(null, "Pontos de vida = " + batalha01BuTec[0]);
+                        int vidaNave[] = {100};
+                        int naveInimiga[] = {100};
+                        JOptionPane.showMessageDialog(null, "Pontos de vida = " + vidaNave[0] + "\nNave inimiga = " + naveInimiga[0]);
 
                         do {
 
@@ -749,38 +758,38 @@ public class ProjetoScript {
 
                                 case 1:
                                     JOptionPane.showMessageDialog(null, "Dano de " + (dano - 5)
-                                            + " Você errou o ataque e os inimigos contra-atacaram \n sua nave ficou mais lenta.");
-                                    batalha01BuTec[0] -= 15;
-                                    batalha01BuTec[1] -= dano;
+                                            + " Você errou o ataque!!");
+                                    vidaNave[0] -= 15;
+                                    naveInimiga[0] -= dano;
                                     break;
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "Dano de " + (dano - 5)
-                                            + " ataque muito fraco. \n a defesa do inimigo foi ativada   ");
-                                    batalha01BuTec[0] -= 15;
-                                    batalha01BuTec[1] -= dano;
+                                            + " ataque muito fraco!!");
+                                    vidaNave[0] -= 15;
+                                    naveInimiga[0] -= dano;
                                     break;
                                 case 3:
                                     JOptionPane.showMessageDialog(null,
-                                            "Dano de " + dano + " Ataque forte, a nave inimiga sofreu algum dano");
-                                    batalha01BuTec[1] -= dano;
+                                            "Dano de " + dano + " Ataque forte!!");
+                                    naveInimiga[0] -= dano;
                                     break;
                                 case 4:
                                     JOptionPane.showMessageDialog(null, "Dano de " + dano
-                                            + " Ataque forte, Você quebrou a defesa inimiga agora ele esta vulnerável");
+                                            + " Ataque forte!!");
 
-                                    batalha01BuTec[1] -= dano;
+                                    naveInimiga[0] -= dano;
                                     break;
                                 case 5:
                                     JOptionPane.showMessageDialog(null,
-                                            "Dano de " + dano + " Ataque crítico, a nave inimiga está mais lenta");
+                                            "Dano de " + dano + " Ataque crítico!!");
 
-                                    batalha01BuTec[1] -= dano;
+                                    naveInimiga[0] -= dano;
                                     break;
                                 case 6:
                                     JOptionPane.showMessageDialog(null,
-                                            "Dano de " + dano + " Ataque crítico, motor da nave inimiga deu sinal de falha");
+                                            "Dano de " + dano + " Ataque crítico!!");
 
-                                    batalha01BuTec[1] -= dano;
+                                    naveInimiga[0] -= dano;
                                     break;
 
                                 default:
@@ -789,22 +798,22 @@ public class ProjetoScript {
 
                             }
 
-                            if (batalha01BuTec[1] < 0) {
-                                batalha01BuTec[1] = 0;
-                                JOptionPane.showMessageDialog(null, " Pontos de vida = " + batalha01BuTec[0]
-                                        + "\nVida do inimigo = " + batalha01BuTec[1]);
+                            if (naveInimiga[0] < 0) {
+                            	naveInimiga[0] = 0;
+                                JOptionPane.showMessageDialog(null, " Pontos de vida = " + vidaNave[0]
+                                        + "\nVida do inimigo = " + naveInimiga[0]);
                             } else {
-                                JOptionPane.showMessageDialog(null, " Pontos de vida = " + batalha01BuTec[0]
-                                        + "\nVida do inimigo = " + batalha01BuTec[1]);
+                                JOptionPane.showMessageDialog(null, " Pontos de vida = " + vidaNave[0]
+                                        + "\nVida do inimigo = " + naveInimiga[0]);
                             }
 
-                        } while (batalha01BuTec[1] > 0 && batalha01BuTec[0] > 0);
+                        } while (naveInimiga[0] > 0 && vidaNave[0] > 0);
 
-                        if (batalha01BuTec[1] <= 0) {
+                        if (naveInimiga[0] <= 0) {
                             JOptionPane.showMessageDialog(null, "Você derrotou o inimigo!");
                             JOptionPane.showMessageDialog(null,
                                     "Você adquiriu uma arma de mão... uma pistola a lazer muito usada em batalhas terrestres");
-                        } else if (batalha01BuTec[0] <= 0) {
+                        } else if (vidaNave[0] <= 0) {
                             JOptionPane.showMessageDialog(null,
                                     "Você não sobreviveu ao ataque e sua nave foi destruída \n\nFim de jogo!");
                             break;
@@ -823,14 +832,15 @@ public class ProjetoScript {
                                 + "porém os ciclopes são extremamente altos e sua força física e vital são incomparaveis",
                                 "Introdução", JOptionPane.INFORMATION_MESSAGE);
 
-                        int vidaPersonagem[] = {100, 200};
+                        int vidaPersonagem[] = {100};
+                        int vidaCiclope[] = {200};
 
                         JOptionPane.showMessageDialog(null,
-                                "Sua vida =" + vidaPersonagem[0] + "\nVida Ciclope = " + vidaPersonagem[1], "Informações",
+                                "Sua vida =" + vidaPersonagem[0] + "\nVida Ciclope = " +  vidaCiclope[0], "Informações",
                                 JOptionPane.INFORMATION_MESSAGE);
 
                         // segunda batalha ***começo***
-                        
+                        int danoPistola = 15;
                         do {
 
                             do {
@@ -840,8 +850,8 @@ public class ProjetoScript {
                             dado3 = Integer.parseInt(dado2);
                             dado3 = dado(dado3);
 
-                            int danoPistola = 15;
-                            int dano = danoPistola * totalSoma;
+                         
+                            int dano = danoPistola * dado3;
                             switch (dado3) {
 
                                 case 1:
@@ -857,25 +867,25 @@ public class ProjetoScript {
                                     JOptionPane.showMessageDialog(null,
                                             "Você acertou um tiro, mas ainda não atingiu um ponto vital \n" + "Dano de "
                                             + dano);
-                                    vidaPersonagem[1] -= dano;
+                                    vidaCiclope[0] -= dano;
                                     break;
                                 case 4:
                                     JOptionPane.showMessageDialog(null,
                                             "Você acertou um tiro, não atingiu um ponto vital mas passou muito próximo \n"
                                             + "Dano de " + dano);
-                                    vidaPersonagem[1] -= dano;
+                                    vidaCiclope[0] -= dano;
                                     break;
                                 case 5:
                                     JOptionPane.showMessageDialog(null, "Você acertou um ponto vital\n" + "Dano de " + dano);
 
-                                    vidaPersonagem[1] -= dano;
+                                    vidaCiclope[0] -= dano;
                                     break;
                                 case 6:
                                     JOptionPane.showMessageDialog(null,
                                             "Você acertou um ponto vital, tirando um boa parte da vida do ciclope \n"
                                             + "Dano de " + dano);
 
-                                    vidaPersonagem[1] -= dano;
+                                    vidaCiclope[0] -= dano;
                                     break;
 
                                 default:
@@ -884,18 +894,18 @@ public class ProjetoScript {
 
                             }
 
-                            if (vidaPersonagem[1] < 0) {
-                                vidaPersonagem[1] = 0;
+                            if ( vidaCiclope[0] < 0) {
+                            	 vidaCiclope[0] = 0;
                                 JOptionPane.showMessageDialog(null, " Pontos de vida = " + vidaPersonagem[0]
-                                        + "\nVida do inimigo = " + vidaPersonagem[1]);
+                                        + "\nVida do inimigo = " +  vidaCiclope[0]);
                             } else {
                                 JOptionPane.showMessageDialog(null, " Pontos de vida = " + vidaPersonagem[0]
-                                        + "\nVida do inimigo = " + vidaPersonagem[1]);
+                                        + "\nVida do inimigo = " +  vidaCiclope[0]);
                             }
 
-                        } while (vidaPersonagem[1] > 0 && vidaPersonagem[0] > 0);
+                        } while ( vidaCiclope[0] > 0 && vidaPersonagem[0] > 0);
 
-                        if (vidaPersonagem[1] <= 0) {
+                        if ( vidaCiclope[0] <= 0) {
                             JOptionPane.showMessageDialog(null, "Você derrotou o inimigo!");
                         } else {
                             JOptionPane.showMessageDialog(null,
@@ -924,9 +934,6 @@ public class ProjetoScript {
                      	 		 
                      		}
                      		
-                     		else {
-                     			//JOptionPane.showMessageDialog( null,mochila[i] );
-                     		}	 	
                      	}
                         
                         mochila[0] = "Pistola";
@@ -944,7 +951,7 @@ public class ProjetoScript {
                         		  if(itensMochila.equals("kit de primeiros socorros")) {
                         			  vidaPersonagem[0] += 20;
                              		 mochila[3] = "'Vazio'"; 
-                             		// JOptionPane.showMessageDialog(null, " Pontos de vida = " + vidaPersonagem[0]);
+                             		 JOptionPane.showMessageDialog(null, " Pontos de vida = " + vidaPersonagem[0]);
                              		 
                         		  }
                         		  
@@ -964,37 +971,391 @@ public class ProjetoScript {
                           int danoSniper = 30;
                           int vidaSegurancas[] = {100,100};
                           if(itensMochila.equals("Sniper")) {
-                        	 do {          
+                        	   JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                             		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
                         		 do {
                                      dado2 = JOptionPane.showInputDialog("Digite '1' para rodar o dado: ");
 
                                  } while (!dado2.equalsIgnoreCase("1"));
                                  dado3 = Integer.parseInt(dado2);
-                                 dado3 = dadoTresLados(dado3);
+                                dado3 = dadoTresLados(dado3);
                                  
-                              int dano = dado3*danoSniper;
-                              
+                              int dano = (dado3*danoSniper)+10;
+                                                         
                               switch (dado3) {
-                              
+                                                       
 							case 1:
-								  JOptionPane.showMessageDialog(null, " Você errou o tiro chamando a atenção dos guardas\n"
-								  									+ " que revidaram ");
+								  JOptionPane.showMessageDialog(null, " Você errou o tiro e os guardas revidaram ");
 								  vidaPersonagem[0]-=10;
+								  
 								break;
 							case 2:
-								  JOptionPane.showMessageDialog(null, "Dano " +dano+ " Voce acertou o tiro porém não foi o suficiente para um HK");
+								  JOptionPane.showMessageDialog(null, "Dano " +dano+ " Voce acertou o tiro porém não foi o suficiente para matalos");
 								  vidaSegurancas[0]-=dano;
 								  break;
 							case 3:
-								  JOptionPane.showMessageDialog(null, "Dano " +(dano + 10 )+ " Critico, voce matou o primeiro segurança");
+								  JOptionPane.showMessageDialog(null, "Dano " +dano+ " Critico, voce matou o primeiro segurança");
 								  vidaSegurancas[0]-=dano;
-							default:
+								  break;
+								  
+							default: System.out.println("erro1");
 								
 							}
-                         }while(vidaPersonagem[0]>0 && vidaSegurancas[0]>0); 
-                        	 
-                        
+                           JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                           	  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                            mochila[1] = "'Vazio'";
+                              
+                              if(vidaSegurancas[0] <=0) {
+                            	  vidaSegurancas[0] = 0;
+                            	  JOptionPane.showMessageDialog(null, "Você matou um segurança... resta apenas 1\n"
+                            	  		+ "escolha sua arma");
+                            	   itensMochila = JOptionPane.showInputDialog(null,"Mochila","Escolha", JOptionPane.INFORMATION_MESSAGE, 
+                            	             null, mochila, mochila[0]); 
+                            	   
+                            	   if(itensMochila.equals("Pistola")) {
+                            		   JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                      		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                            		   do {  
+                            			 do {
+                                             dado2 = JOptionPane.showInputDialog("Digite '1' para rodar o dado: ");
+
+                                         } while (!dado2.equalsIgnoreCase("1"));
+                                         dado3 = Integer.parseInt(dado2);
+                                         dado3 = dado(dado3);
+                                         
+                                      int danoBatalhaSegurancas = (dado3*danoPistola)+10;
+                                  
+                                      switch(dado3) {
+                                      	
+                                      case 1:
+                                    	  JOptionPane.showMessageDialog(null, "Você errou o tiro e recebeu um dano");
+                                    	  vidaPersonagem[0]-=15;
+                                    	  break;
+                                      case 2:
+                                    	  JOptionPane.showMessageDialog(null, "Você acertou o segurança, porem ele contra-atacou");
+                                    	  vidaPersonagem[0]-=10;
+                                    	  vidaSegurancas[1]-=10;
+                                    	  break;
+                                      case 3:
+                                    	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +"Moderado");
+                                    	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                    	  break;
+                                      case 4:
+                                    	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +"forte");
+                                    	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                    	  break;
+                                      case 5:
+                                    	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +"critico");
+                                    	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                    	  break;
+                                      case 6:
+                                    	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +"Tiro na cabeça");
+                                    	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                    	  break;
+  
+                                      }
+                                   
+                                      
+                                      if(vidaSegurancas[1] <= 0) {
+                                    		vidaSegurancas[1] = 0;
+                                    		  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                              		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                                    		
+                                    	}
+                                      else {
+                                    	  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                          		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                                      }
+                                      
+                                    }while(vidaSegurancas[1]>0 && vidaPersonagem[0]>0);
+                                    	
+                            		   if(vidaSegurancas[1] == 0) {
+                            			   JOptionPane.showMessageDialog(null," Parabéns!!! Você matou o segurança");
+                            			   
+                            		   }
+                            		   else {
+                                           JOptionPane.showMessageDialog(null,
+                                                   "Você não sobreviveu ao ataque \nFim de jogo!");
+                                           break;
+                                       } 
+                            		   
+                            	   }
+                              }
+                           
+                            
+                              else {
+                            	  
+                            	  
+                            	  JOptionPane.showMessageDialog(null, "escola sua arma... ainda tem muita batalha pela frente");
+                            	   itensMochila = JOptionPane.showInputDialog(null,"Mochila","Escolha", JOptionPane.INFORMATION_MESSAGE, 
+                            	             null, mochila, mochila[0]); 
+                            	   
+                            	   
+                            	   if(itensMochila.equals("Pistola")) {
+                                   	   JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                        		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                              		   do {  
+                              			 do {
+                                               dado2 = JOptionPane.showInputDialog("Digite '1' para rodar o dado: ");
+
+                                           } while (!dado2.equalsIgnoreCase("1"));
+                                           dado3 = Integer.parseInt(dado2);
+                                           dado3 = dado(dado3);
+                                           
+                                        int danoBatalhaSegurancas = (dado3*danoPistola)+10;
+                                    
+                                        switch(dado3) {
+                                        	
+                                        case 1:
+                                      	  JOptionPane.showMessageDialog(null, "Você errou o tiro e recebeu um dano");
+                                      	  vidaPersonagem[0]-=15;
+                                      	  break;
+                                        case 2:
+                                      	  JOptionPane.showMessageDialog(null, "Você acertou um dos seguranças, e os dois contra atacaram");
+                                      	  vidaPersonagem[0]-=20;
+                                      	  vidaSegurancas[0]-=10;
+                                      	  break;
+                                        case 3:
+                                      	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Moderado");
+                                      	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                                      	  break;
+                                        case 4:
+                                      	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" forte");
+                                      	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                                      	  break;
+                                        case 5:
+                                      	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" critico");
+                                      	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                                      	  break;
+                                        case 6:
+                                      	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Tiro na cabeça");
+                                      	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                                      	  break;
+
+                                        }
+                                       
+                                        
+                                        if(vidaSegurancas[0] <= 0) {
+                                      		vidaSegurancas[0] = 0;
+                                      		  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                                		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                                      		
+                                      	}
+                                        else {
+                                      	  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                            		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                                        }
+                                        
+                                      }while(vidaSegurancas[0]>0 && vidaPersonagem[0]>0);
+                              		   
+                              		   if(vidaSegurancas[0] == 0){
+                              			  JOptionPane.showMessageDialog(null," Voce derrotou um dos seguranças, ainda falta um");
+                              			   
+                              		   }
+                              		 else {
+                                         JOptionPane.showMessageDialog(null,
+                                                 "Você não sobreviveu ao ataque e sua nave foi destruída \n\nFim de jogo!");
+                                         break;
+                                     } 
+                            		   do {  
+                                			 do {
+                                                 dado2 = JOptionPane.showInputDialog("Digite '1' para rodar o dado: ");
+
+                                             } while (!dado2.equalsIgnoreCase("1"));
+                                             dado3 = Integer.parseInt(dado2);
+                                             dado3 = dado(dado3);
+                                             
+                                          int danoBatalhaSegurancas = (dado3*danoPistola)+10;
+                                      
+                                          switch(dado3) {
+                                          	
+                                          case 1:
+                                        	  JOptionPane.showMessageDialog(null, "Você errou o tiro e recebeu um dano");
+                                        	  vidaPersonagem[0]-=15;
+                                        	  break;
+                                          case 2:
+                                        	  JOptionPane.showMessageDialog(null, "Você acertou o segurança, porem ele contra-atacou");
+                                        	  vidaPersonagem[0]-=10;
+                                        	  vidaSegurancas[1]-=10;
+                                        	  break;
+                                          case 3:
+                                        	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Moderado");
+                                        	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                        	  break;
+                                          case 4:
+                                        	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" forte");
+                                        	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                        	  break;
+                                          case 5:
+                                        	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" critico");
+                                        	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                        	  break;
+                                          case 6:
+                                        	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Tiro na cabeça");
+                                        	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                                        	  break;
+
+                                          }
+                                       
+                                          
+                                          if(vidaSegurancas[1] <= 0) {
+                                        		vidaSegurancas[1] = 0;
+                                        		  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                                  		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                                        		
+                                        	}
+                                          else {
+                                        	  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                              		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                                          }
+                                          
+                                        }while(vidaSegurancas[1]>0 && vidaPersonagem[0]>0);
+                                        	
+                                		   if(vidaSegurancas[1] == 0) {
+                                			   JOptionPane.showMessageDialog(null," Parabéns!!! Você matou o segurança");
+                                			   
+                                		   }
+                                		   else {
+                                               JOptionPane.showMessageDialog(null,
+                                                       "Você não sobreviveu ao ataque \nFim de jogo!");
+                                               break;
+                                           }    
+                                      }
+                              }
+
                           }
+                          else if(itensMochila.equals("Pistola")) {
+                       	   JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                            		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                  		   do {  
+                  			 do {
+                                   dado2 = JOptionPane.showInputDialog("Digite '1' para rodar o dado: ");
+
+                               } while (!dado2.equalsIgnoreCase("1"));
+                               dado3 = Integer.parseInt(dado2);
+                               dado3 = dado(dado3);
+                               
+                            int danoBatalhaSegurancas = (dado3*danoPistola)+10;
+                        
+                            switch(dado3) {
+                            	
+                            case 1:
+                          	  JOptionPane.showMessageDialog(null, "Você errou o tiro e recebeu um dano");
+                          	  vidaPersonagem[0]-=15;
+                          	  break;
+                            case 2:
+                          	  JOptionPane.showMessageDialog(null, "Você acertou um dos seguranças, e os dois contra atacaram");
+                          	  vidaPersonagem[0]-=20;
+                          	  vidaSegurancas[0]-=10;
+                          	  break;
+                            case 3:
+                          	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Moderado");
+                          	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                          	  break;
+                            case 4:
+                          	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" forte");
+                          	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                          	  break;
+                            case 5:
+                          	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" critico");
+                          	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                          	  break;
+                            case 6:
+                          	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Tiro na cabeça");
+                          	  vidaSegurancas[0]-=danoBatalhaSegurancas;
+                          	  break;
+
+                            }
+                           
+                            
+                            if(vidaSegurancas[0] <= 0) {
+                          		vidaSegurancas[0] = 0;
+                          		  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                    		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                          		
+                          	}
+                            else {
+                          	  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                            }
+                            
+                          }while(vidaSegurancas[0]>0 && vidaPersonagem[0]>0);
+                  		   
+                  		   if(vidaSegurancas[0] == 0){
+                  			  JOptionPane.showMessageDialog(null," Voce derrotou um dos seguranças, ainda falta um");
+                  			   
+                  		   }
+                  		 else {
+                             JOptionPane.showMessageDialog(null,
+                                     "Você não sobreviveu ao ataque e sua nave foi destruída \n\nFim de jogo!");
+                             break;
+                         }
+                		   do {  
+                    			 do {
+                                     dado2 = JOptionPane.showInputDialog("Digite '1' para rodar o dado: ");
+
+                                 } while (!dado2.equalsIgnoreCase("1"));
+                                 dado3 = Integer.parseInt(dado2);
+                                 dado3 = dado(dado3);
+                                 
+                              int danoBatalhaSegurancas = (dado3*danoPistola)+10;
+                          
+                              switch(dado3) {
+                              	
+                              case 1:
+                            	  JOptionPane.showMessageDialog(null, "Você errou o tiro e recebeu um dano");
+                            	  vidaPersonagem[0]-=15;
+                            	  break;
+                              case 2:
+                            	  JOptionPane.showMessageDialog(null, "Você acertou o segurança, porem ele contra-atacou");
+                            	  vidaPersonagem[0]-=10;
+                            	  vidaSegurancas[1]-=10;
+                            	  break;
+                              case 3:
+                            	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Moderado");
+                            	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                            	  break;
+                              case 4:
+                            	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" forte");
+                            	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                            	  break;
+                              case 5:
+                            	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" critico");
+                            	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                            	  break;
+                              case 6:
+                            	  JOptionPane.showMessageDialog(null, "Dano de " + danoBatalhaSegurancas +" Tiro na cabeça");
+                            	  vidaSegurancas[1]-=danoBatalhaSegurancas;
+                            	  break;
+
+                              }
+                           
+                              
+                              if(vidaSegurancas[1] <= 0) {
+                            		vidaSegurancas[1] = 0;
+                            		  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                      		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                            		
+                            	}
+                              else {
+                            	  JOptionPane.showMessageDialog(null,"Pontos de vida = " + vidaPersonagem[0] + "\nVida segurança 1 = " +vidaSegurancas[0]
+                                  		  +"\n vida segurança 2 = " + vidaSegurancas[1]);
+                              }
+                              
+                            }while(vidaSegurancas[1]>0 && vidaPersonagem[0]>0);
+                            	
+                    		   if(vidaSegurancas[1] == 0) {
+                    			   JOptionPane.showMessageDialog(null," Parabéns!!! Você matou o segurança");
+                    			   
+                    		   }
+                    		   else {
+                                   JOptionPane.showMessageDialog(null,
+                                           "Você não sobreviveu ao ataque \nFim de jogo!");
+                                   break;
+                               } 
+               
+                          }
+                          
                           
                         // segunda escolha busca por tecnologias **fim**
                     }
